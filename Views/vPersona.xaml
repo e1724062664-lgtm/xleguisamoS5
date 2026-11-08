@@ -44,6 +44,7 @@
                                 <ColumnDefinition Width="50" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Label Text="{Binding Id}"
                                    Grid.Column="0"
@@ -51,8 +52,12 @@
                             <Label Text="{Binding Name}"
                                    Grid.Column="1"
                                    VerticalOptions="Center" />
+                            <Button Text="Editar"
+                                   Grid.Column="2"
+                                   CommandParameter="{Binding .}"
+                                   Clicked="btnEditar_Clicked" />
                             <Button Text="Eliminar"
-                                    Grid.Column="2"
+                                    Grid.Column="3"
                                     BackgroundColor="Red"
                                     TextColor="White"
                                     CommandParameter="{Binding Id}"

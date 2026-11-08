@@ -80,5 +80,34 @@ namespace xleguisamoS5.Repositories
                 return false;
             }
         }
+
+        public bool UpdatePerson(int id, string? newName)
+        {
+            try
+            {
+                Init();
+
+                if (string.IsNullOrWhiteSpace(newName))
+                    throw new Exception("El nombre es requerido");
+
+                var person = _conn!.Find<Persona>(id);
+                if (person is null)
+                {
+                    StatusMessage = $"No se encontró la persona con Id {id}";
+                    return false;
+                }
+
+                person.Name = newName.Trim();
+                _conn.Update(person);
+                StatusMessage = "Persona actualizada correctamente";
+                return true;
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = "Error: " + ex.Message;
+                return false;
+            }
+        }
+
     }
 }
